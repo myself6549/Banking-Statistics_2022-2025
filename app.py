@@ -448,23 +448,23 @@ with tab4:
 
     st.plotly_chart(fig, use_container_width=True)
 
-monthly = (
-    filtered_df
-    .groupby(pd.Grouper(key="date", freq="ME"))
-    ["pos"]
-    .sum()
-    .reset_index()
-)
+    monthly = (
+        filtered_df
+        .groupby(pd.Grouper(key="date", freq="ME"))
+        ["pos"]
+        .sum()
+        .reset_index()
+    )
 
-fig_month = px.line(
-    monthly,
-    x="date",
-    y="pos",
-    markers=True,
-    title="Monthly POS Growth Trend"
-)
+    fig_month = px.line(
+        monthly,
+        x="date",
+        y="pos",
+        markers=True,
+        title="Monthly POS Growth Trend"
+    )
 
-st.plotly_chart(fig_month, use_container_width=True)
+    st.plotly_chart(fig_month, use_container_width=True)
 # ==================================================
 # BANK CATEGORY ANALYSIS
 # ==================================================
