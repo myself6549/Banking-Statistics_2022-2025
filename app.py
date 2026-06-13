@@ -175,24 +175,6 @@ Card Issuance and Digital Payment Trends across Indian Banks.
 """, unsafe_allow_html=True)
 
 st.info("""
-### 📖 About Banking Statistics
-
-This dashboard provides insights into India's banking ecosystem.
-
-Key Focus Areas:
-
-• ATM & CRM Infrastructure
-
-• POS Deployment
-
-• Credit & Debit Card Adoption
-
-• QR Payment Growth
-
-• Digital Transaction Trends
-
-• Bank Category Performance
-
 The dashboard helps identify growth opportunities,
 digital adoption patterns, and infrastructure expansion.
 """)
