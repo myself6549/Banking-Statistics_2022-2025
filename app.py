@@ -125,6 +125,27 @@ button[data-baseweb="tab"] {
 [data-testid="stDataFrame"] * {
     color: black !important;
 }
+/* =========================
+   DATE RANGE WIDGET
+========================= */
+
+/* Date Range Label */
+[data-testid="stDateInput"] label {
+    color: black !important;
+    font-weight: 600;
+}
+
+/* Date Input Box */
+[data-testid="stDateInput"] input {
+    background-color: white !important;
+    color: black !important;
+    border-radius: 8px;
+}
+
+/* Calendar Icon */
+[data-testid="stDateInput"] svg {
+    fill: black !important;
+}
 
 </style>
 """, unsafe_allow_html=True)
