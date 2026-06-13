@@ -13,48 +13,58 @@ st.set_page_config(
 st.markdown("""
 <style>
 
-/* Main Background */
+/* Main App Background with Image */
 .stApp {
-    background: linear-gradient(
-        135deg,
-        #0f172a 0%,
-        #1e3a8a 50%,
-        #2563eb 100%
-    );
+    background: url("https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1920&q=80");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Dark overlay for readability */
+.stApp::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(248, 250, 252, 0.85);
+    z-index: 0;
+}
+
+/* Ensure content stays above overlay */
+.css-1d391kg, .block-container {
+    position: relative;
+    z-index: 1;
 }
 
 /* Sidebar */
 [data-testid="stSidebar"] {
-    background-color: #0f172a;
-}
-
-/* Header */
-[data-testid="stHeader"] {
-    background: rgba(0,0,0,0);
-}
-
-/* Text */
-h1,h2,h3,h4,h5,h6,p,label {
-    color: white !important;
+    background-color: #ffffff;
 }
 
 /* KPI Cards */
 [data-testid="metric-container"] {
-    background: rgba(255,255,255,0.08);
-    border-radius: 15px;
+    background-color: white;
+    border-radius: 12px;
     padding: 15px;
-    border: 1px solid rgba(255,255,255,0.15);
+    border: 1px solid #e5e7eb;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.08);
 }
 
-/* Tabs */
-.stTabs [data-baseweb="tab"] {
-    font-size: 16px;
-    font-weight: bold;
+/* Charts Container */
+div[data-testid="stVerticalBlock"] > div {
+    border-radius: 10px;
+}
+
+/* Headings */
+h1,h2,h3,h4,h5,h6 {
+    color: #111827 !important;
 }
 
 </style>
 """, unsafe_allow_html=True)
-
 # ==================================================
 # LOAD DATA
 # ==================================================
