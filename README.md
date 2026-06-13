@@ -134,11 +134,9 @@ This project provides insights into ATM deployment, POS terminals, debit cards, 
 
 ### Main Dashboard
 
-<img width="100%" alt="Dashboard Preview" src="dashboard_screenshot.png">
+https://banking-statistics-dashboard-pvsx3ycpmrj3j7appef5x85.streamlit.app/
 
-*(Replace with actual screenshot after deployment)*
 
----
 
 
 ### Install Dependencies
