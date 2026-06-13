@@ -91,6 +91,40 @@ h1, h2, h3, h4, h5, h6 {
 .css-1d391kg {
     padding-top: 1rem;
 }
+/* Make all text black */
+html, body, [class*="css"] {
+    color: black !important;
+}
+
+/* Streamlit text elements */
+p, span, div, label, li, td, th {
+    color: black !important;
+}
+
+/* Sidebar text */
+[data-testid="stSidebar"] * {
+    color: black !important;
+}
+
+/* Metric values and labels */
+[data-testid="metric-container"] * {
+    color: black !important;
+}
+
+/* Info, Success, Warning boxes */
+[data-testid="stAlert"] * {
+    color: black !important;
+}
+
+/* Tabs */
+button[data-baseweb="tab"] {
+    color: black !important;
+}
+
+/* Dataframe text */
+[data-testid="stDataFrame"] * {
+    color: black !important;
+}
 
 </style>
 """, unsafe_allow_html=True)
