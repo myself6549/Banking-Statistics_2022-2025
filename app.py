@@ -13,15 +13,19 @@ st.set_page_config(
 st.markdown("""
 <style>
 
-/* Main App Background with Image */
+/* =========================
+   FINTECH BACKGROUND IMAGE
+========================= */
 .stApp {
-    background: url("https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1920&q=80");
+    background: url("/mnt/data/a_clean_modern_fintech_banking_themed_backgroun.png");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 }
 
-/* Dark overlay for readability */
+/* =========================
+   GLASS OVERLAY LAYER
+========================= */
 .stApp::before {
     content: "";
     position: absolute;
@@ -29,42 +33,68 @@ st.markdown("""
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(248, 250, 252, 0.85);
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(10px);
     z-index: 0;
 }
 
-/* Ensure content stays above overlay */
-.css-1d391kg, .block-container {
+/* Keep content above overlay */
+.block-container {
     position: relative;
     z-index: 1;
 }
 
-/* Sidebar */
+/* =========================
+   SIDEBAR GLASS EFFECT
+========================= */
 [data-testid="stSidebar"] {
-    background-color: #ffffff;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* KPI Cards */
+/* =========================
+   GLASS KPI CARDS
+========================= */
 [data-testid="metric-container"] {
-    background-color: darkblue;
-    border-radius: 12px;
-    padding: 15px;
-    border: 1px solid #e5e7eb;
-    box-shadow: 0px 2px 8px rgba(0,0,0,0.08);
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(15px);
+    border-radius: 16px;
+    padding: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
 }
 
-/* Charts Container */
+/* =========================
+   CHART / CONTAINER GLASS
+========================= */
 div[data-testid="stVerticalBlock"] > div {
-    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px);
+    border-radius: 14px;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* Headings */
-h1,h2,h3,h4,h5,h6 {
-    color: #111827 !important;
+/* =========================
+   HEADINGS (clean fintech look)
+========================= */
+h1, h2, h3, h4, h5, h6 {
+    color: #0f172a !important;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+}
+
+/* =========================
+   REMOVE DEFAULT SPACING CLUTTER
+========================= */
+.css-1d391kg {
+    padding-top: 1rem;
 }
 
 </style>
 """, unsafe_allow_html=True)
+
 # ==================================================
 # LOAD DATA
 # ==================================================
