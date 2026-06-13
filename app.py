@@ -46,7 +46,7 @@ st.markdown("""
 
 /* KPI Cards */
 [data-testid="metric-container"] {
-    background-color: white;
+    background-color: darkblue;
     border-radius: 12px;
     padding: 15px;
     border: 1px solid #e5e7eb;
