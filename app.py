@@ -10,6 +10,50 @@ st.set_page_config(
     page_icon="🏦",
     layout="wide"
 )
+st.markdown("""
+<style>
+
+/* Main Background */
+.stApp {
+    background: linear-gradient(
+        135deg,
+        #0f172a 0%,
+        #1e3a8a 50%,
+        #2563eb 100%
+    );
+}
+
+/* Sidebar */
+[data-testid="stSidebar"] {
+    background-color: #0f172a;
+}
+
+/* Header */
+[data-testid="stHeader"] {
+    background: rgba(0,0,0,0);
+}
+
+/* Text */
+h1,h2,h3,h4,h5,h6,p,label {
+    color: white !important;
+}
+
+/* KPI Cards */
+[data-testid="metric-container"] {
+    background: rgba(255,255,255,0.08);
+    border-radius: 15px;
+    padding: 15px;
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* Tabs */
+.stTabs [data-baseweb="tab"] {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+</style>
+""", unsafe_allow_html=True)
 
 # ==================================================
 # LOAD DATA
@@ -36,8 +80,47 @@ df = load_data()
 st.title("🏦 Bank-wise ATM, POS & Card Statistics Dashboard")
 
 st.markdown("""
-Analyze ATM deployment, POS infrastructure, card issuance,
-and transaction trends across Indian banks from 2022 onwards.
+<div style='
+background: linear-gradient(90deg,#1e3a8a,#2563eb);
+padding:25px;
+border-radius:15px;
+text-align:center;
+margin-bottom:20px;
+'>
+
+<h1 style='color:white;'>
+🏦 Banking Statistics Dashboard
+</h1>
+
+<p style='color:white;font-size:18px;'>
+Comprehensive analysis of ATM Networks, POS Infrastructure,
+Card Issuance and Digital Payment Trends across Indian Banks.
+</p>
+
+</div>
+""", unsafe_allow_html=True)
+
+st.info("""
+### 📖 About Banking Statistics
+
+This dashboard provides insights into India's banking ecosystem.
+
+Key Focus Areas:
+
+• ATM & CRM Infrastructure
+
+• POS Deployment
+
+• Credit & Debit Card Adoption
+
+• QR Payment Growth
+
+• Digital Transaction Trends
+
+• Bank Category Performance
+
+The dashboard helps identify growth opportunities,
+digital adoption patterns, and infrastructure expansion.
 """)
 
 # ==================================================
@@ -137,13 +220,14 @@ st.divider()
 # ==================================================
 # TABS
 # ==================================================
-tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
+tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs([
     "Overview",
     "Infrastructure",
     "Cards",
     "Transactions",
     "Categories",
     "Insights",
+    "Heatmap",
     "Data"
 ])
 
@@ -262,6 +346,7 @@ with tab3:
 # TRANSACTION ANALYTICS
 # ==================================================
 with tab4:
+    
 
     st.subheader("📈 Online Transaction Trends")
 
@@ -289,6 +374,23 @@ with tab4:
 
     st.plotly_chart(fig, use_container_width=True)
 
+monthly = (
+    filtered_df
+    .groupby(pd.Grouper(key="date", freq="ME"))
+    ["pos"]
+    .sum()
+    .reset_index()
+)
+
+fig_month = px.line(
+    monthly,
+    x="date",
+    y="pos",
+    markers=True,
+    title="Monthly POS Growth Trend"
+)
+
+st.plotly_chart(fig_month, use_container_width=True)
 # ==================================================
 # BANK CATEGORY ANALYSIS
 # ==================================================
@@ -380,11 +482,34 @@ Expand ATM and Micro-ATM networks in rural regions.
 ### 6️⃣ Customer Awareness
 Conduct digital banking literacy programs to improve adoption.
 """)
+    
+with tab7:
+
+    st.subheader("📊 Correlation Heatmap")
+
+    cols = [
+        "atms_crms_onsite",
+        "atms_crms_offsite",
+        "pos",
+        "micro_atms",
+        "credit_cards",
+        "debit_cards"
+    ]
+
+    corr = filtered_df[cols].corr()
+
+    fig = px.imshow(
+        corr,
+        text_auto=True,
+        title="Correlation Between Banking Metrics"
+    )
+
+    st.plotly_chart(fig, use_container_width=True)
 
 # ==================================================
 # DATA EXPLORER
 # ==================================================
-with tab7:
+with tab8:
 
     st.subheader("📋 Data Explorer")
 
@@ -402,6 +527,36 @@ with tab7:
         mime="text/csv"
     )
 
+st.markdown("""
+---
+## 📑 Executive Summary
+
+### Key Findings
+
+✅ Growth in ATM and POS infrastructure continues.
+
+✅ Debit cards significantly outnumber credit cards.
+
+✅ QR-based payments are rapidly expanding.
+
+✅ Online transaction values continue to increase.
+
+✅ Major public and private sector banks dominate infrastructure deployment.
+
+### Strategic Recommendations
+
+1. Expand ATM and POS coverage in underserved areas.
+
+2. Encourage credit card adoption through incentives.
+
+3. Continue investing in UPI and QR ecosystems.
+
+4. Strengthen fraud monitoring and cybersecurity.
+
+5. Improve financial inclusion through Micro ATM expansion.
+
+---
+""")
 # ==================================================
 # FOOTER
 # ==================================================
